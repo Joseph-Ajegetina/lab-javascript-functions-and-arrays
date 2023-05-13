@@ -50,7 +50,7 @@ function sumNumbers(numbers) {
 function sum(mixedArray) {
 
   // check if includes object or array 
-  if(mixedArray.includes('{}') || mixedArray.includes('[]')){
+  if (mixedArray.includes('{}') || mixedArray.includes('[]')) {
     return new Error("Unsupported data type sir or ma'am")
   }
   let totalSum = 0;
@@ -129,7 +129,7 @@ function averageWordLength(wordsArr) {
     sum += word.length
   }
 
-  return  sum / totalWords;
+  return sum / totalWords;
 }
 
 // Bonus - Iteration #4.1
@@ -139,10 +139,10 @@ function avg(mixedArray) {
     return null
   }
 
-    // return one element
-    if (mixedArray.length === 1) {
-      return mixedArray[0].length
-    }
+  // return one element
+  if (mixedArray.length === 1) {
+    return mixedArray[0].length
+  }
 
   let totalSum = 0;
   let totalLength = mixedArray.length
@@ -179,14 +179,37 @@ const wordsUnique = [
   'bring'
 ];
 
-function uniquifyArray() { }
+function uniquifyArray(wordsUnique) {
+  // check if array is empty
+  if (!wordsUnique.length) {
+    return null
+  }
+
+  let uniqueArray = []
+
+  for (let word of wordsUnique) {
+    if (!uniqueArray.includes(word)) {
+      uniqueArray.push(word)
+    }
+  }
+
+  return uniqueArray
+}
 
 
 
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() { }
+function doesWordExist(wordsFind, searchWord) {
+  // check length
+  if (!wordsFind.length) {
+    return null
+  }
+
+
+  return wordsFind.includes(searchWord)
+}
 
 
 
@@ -205,8 +228,42 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTimes() { }
+function howManyTimes(wordsCount, searchWord) {
+  if (!wordsCount.length) {
+    return 0;
+  }
 
+  // checking to see if word is in array 
+  if (!wordsCount.includes(searchWord)) {
+    return 0
+  }
+
+  // counter to track number of times word appears 
+  let counter = 0
+
+  // starting position to look for word, starting at the begininning
+  let pointerIndex = 0
+
+  // while loop to continuously look for word
+  while (true) {
+    // index to track whether word is in the array
+    const index = wordsCount.indexOf(searchWord, pointerIndex)
+
+    // increasing the poitner index continue search if we find the search word
+    // increasing the counter as we find the word instances
+    if (index !== -1) {
+
+      pointerIndex = index + 1
+      counter += 1
+
+    } else if (index === -1) {
+      break;
+    }
+
+  }
+
+  return counter
+}
 
 
 // Iteration #8: Bonus
